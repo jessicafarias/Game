@@ -1,42 +1,55 @@
+export var BootScene = new Phaser.Class({
 
-
-var BootScene = new Phaser.Class({
   Extends: Phaser.Scene,
+
   initialize:
-  function BootScene (){
+
+  function BootScene ()
+  {
       Phaser.Scene.call(this, { key: 'BootScene' });
   },
 
-  preload: function (){
+  preload: function ()
+  {
       // map tiles
       this.load.image('tiles', 'assets/map/spritesheet.png');
       
       // map in json format
       this.load.tilemapTiledJSON('map', 'assets/map/map.json');
       
+      // enemies
+      this.load.image("dragonblue", "assets/dragonblue.png");
+      this.load.image("dragonorrange", "assets/dragonorrange.png");
+      
       // our two characters
       this.load.spritesheet('player', 'assets/RPG_assets.png', { frameWidth: 16, frameHeight: 16 });
   },
 
-  create: function (){
+  create: function ()
+  {
       // start the WorldScene
       this.scene.start('WorldScene');
   }
 });
 
-var WorldScene = new Phaser.Class({
+export var WorldScene = new Phaser.Class({
 
   Extends: Phaser.Scene,
+
   initialize:
-  function WorldScene () {
+
+  function WorldScene ()
+  {
       Phaser.Scene.call(this, { key: 'WorldScene' });
   },
 
-  preload: function () {
+  preload: function ()
+  {
       
   },
 
-  create: function (){
+  create: function ()
+  {
       // create the map
       var map = this.make.tilemap({ key: 'map' });
       
@@ -107,6 +120,14 @@ var WorldScene = new Phaser.Class({
       }        
       // add collider
       this.physics.add.overlap(this.player, this.spawns, this.onMeetEnemy, false, this);
+      // we listen for 'wake' event
+      this.sys.events.on('wake', this.wake, this);
+  },
+  wake: function() {
+      this.cursors.left.reset();
+      this.cursors.right.reset();
+      this.cursors.up.reset();
+      this.cursors.down.reset();
   },
   onMeetEnemy: function(player, zone) {        
       // we move the zone to some other location
@@ -116,64 +137,56 @@ var WorldScene = new Phaser.Class({
       // shake the world
       this.cameras.main.shake(300);
       
-      // switch to BattleScene
-      this.scene.switch('BattleScene');
+      this.input.stopPropagation();
+      // start battle 
+      this.scene.switch('BattleScene');                
   },
-  update: function (time, delta){
+  update: function (time, delta)
+  {             
       this.player.body.setVelocity(0);
+      
       // Horizontal movement
-      if (this.cursors.left.isDown){
+      if (this.cursors.left.isDown)
+      {
           this.player.body.setVelocityX(-80);
       }
-      else if (this.cursors.right.isDown){
+      else if (this.cursors.right.isDown)
+      {
           this.player.body.setVelocityX(80);
       }
       // Vertical movement
-      if (this.cursors.up.isDown){
+      if (this.cursors.up.isDown)
+      {
           this.player.body.setVelocityY(-80);
       }
-      else if (this.cursors.down.isDown){
+      else if (this.cursors.down.isDown)
+      {
           this.player.body.setVelocityY(80);
       }        
+
       // Update the animation last and give left/right animations precedence over up/down animations
-      if (this.cursors.left.isDown){
+      if (this.cursors.left.isDown)
+      {
           this.player.anims.play('left', true);
           this.player.flipX = true;
       }
-      else if (this.cursors.right.isDown){
+      else if (this.cursors.right.isDown)
+      {
           this.player.anims.play('right', true);
           this.player.flipX = false;
       }
-      else if (this.cursors.up.isDown){
+      else if (this.cursors.up.isDown)
+      {
           this.player.anims.play('up', true);
       }
-      else if (this.cursors.down.isDown){
+      else if (this.cursors.down.isDown)
+      {
           this.player.anims.play('down', true);
       }
-      else{
+      else
+      {
           this.player.anims.stop();
       }
   }
   
 });
-
-var config = {
-  type: Phaser.AUTO,
-  parent: 'content',
-  width: 320,
-  height: 240,
-  zoom: 2,
-  pixelArt: true,
-  physics: {
-      default: 'arcade',
-      arcade: {
-          gravity: { y: 0 },
-          debug: true // set to true to view zones
-      }
-  },
-  scene: [
-      BootScene,
-      WorldScene
-  ]
-};
-export var gamescene = new Phaser.Game(config);
