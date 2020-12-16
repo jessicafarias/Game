@@ -3,6 +3,7 @@ import { WorldScene } from './scenes/world';
 import { BootScene } from './scenes/BootScene';
 import {UIScene} from './scenes/uiscene'
 import {BattleScene} from './scenes/battle'
+import {SimpleScene2} from './scenes/simple-scene2'
 
 var config = {
   type: Phaser.AUTO,
@@ -19,10 +20,11 @@ var config = {
       }
   },
   scene: [
-      BootScene,
-      WorldScene,
-      BattleScene,
-      UIScene
+    SimpleScene2,
+    BootScene,
+    WorldScene,
+    BattleScene,
+    UIScene,
   ]
 };
 
