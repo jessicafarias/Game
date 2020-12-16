@@ -14,7 +14,8 @@ export default class BootScene extends Phaser.Scene {
   }
 
   create() {
-    this.add.text(30, 70, "this is bootsceene");
+    this.add.text(30, 70, "Walk around to find");
+    this.add.text(40, 90, "enemies");
     this.time.addEvent({ delay: 4000, callback: this.goto, callbackScope: this });
   }
 
