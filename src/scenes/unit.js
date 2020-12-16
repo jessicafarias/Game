@@ -15,7 +15,8 @@ export var Unit = new Phaser.Class({
   attack(target) {
     if(target.living) {
       target.takeDamage(this.damage);
-      this.scene.events.emit("Message", this.type + " attacks " + target.type + " for " + this.damage + " damage");
+      this.scene.events.emit("Message", this.type + " attacks " + 
+      target.type + " for " + this.damage + " damage");
     }
   },    
   takeDamage(damage) {

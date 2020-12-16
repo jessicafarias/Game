@@ -1,8 +1,10 @@
-export class SimpleScene2 extends Phaser.Scene {
+import 'phaser';
+
+export default class SimpleScene2 extends Phaser.Scene {
+
   preload() {
     this.load.image('cokecan', '../assets/cokecan.png');
   }
-  
 
   create() {
     this.add.text(30, 70, "Hello Im Mr.Coque");
@@ -16,4 +18,3 @@ export class SimpleScene2 extends Phaser.Scene {
     this.scene.start('BootScene');
   }
 }
-

@@ -1,11 +1,11 @@
-export var WorldScene = new Phaser.Class({
-  Extends: Phaser.Scene,
-  initialize(){
-    Phaser.Scene.call(this, { key: 'WorldScene' });
-  },
+export default class WorldScene extends Phaser.Scene {
+  
+  constructor () {
+    super('WorldScene');
+  }
 
   preload(){
-  },
+  }
 
   create(){
     var map = this.make.tilemap({ key: 'map' });
@@ -56,20 +56,20 @@ export var WorldScene = new Phaser.Class({
     }        
     this.physics.add.overlap(this.player, this.spawns, this.onMeetEnemy, false, this);
     this.sys.events.on('wake', this.wake, this);
-  },
+  }
   wake() {
     this.cursors.left.reset();
     this.cursors.right.reset();
     this.cursors.up.reset();
     this.cursors.down.reset();
-  },
+  }
   onMeetEnemy(player, zone) {        
     zone.x = Phaser.Math.RND.between(0, this.physics.world.bounds.width);
     zone.y = Phaser.Math.RND.between(0, this.physics.world.bounds.height);
     this.cameras.main.shake(300);
     this.input.stopPropagation();
     this.scene.switch('BattleScene');                
-  },
+  }
   update(time, delta){             
     this.player.body.setVelocity(0);
     if (this.cursors.left.isDown){
@@ -103,4 +103,4 @@ export var WorldScene = new Phaser.Class({
       this.player.anims.stop();
     }
   }
-});
+};

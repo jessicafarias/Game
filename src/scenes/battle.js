@@ -1,24 +1,28 @@
+import 'phaser';
 import {PlayerCharacter} from './player'
 import {Enemy} from './enemy'
 
-export var BattleScene = new Phaser.Class({
-  Extends: Phaser.Scene,
-  initialize(){
-    Phaser.Scene.call(this, { key: "BattleScene" });
-  },
+export default class BattleScene extends Phaser.Scene {
+  constructor () {
+    super('BattleScene');
+  }
   create(){
     this.cameras.main.setBackgroundColor("rgba(0, 200, 0, 0.5)");
     this.startBattle();
     this.sys.events.on('wake', this.startBattle, this);             
-  },
+  }
   startBattle() {
-    var warrior = new PlayerCharacter(this, 250, 50, "player", 1, "Warrior", 100, 20);        
+    var dam = Math.floor(Math.random() * 16) + 10;
+    var dam2 = Math.floor(Math.random() * 16) + 10;
+    var dam3 = Math.floor(Math.random() * 16) + 10;
+    var dam4 = Math.floor(Math.random() * 16) + 10;
+    var warrior = new PlayerCharacter(this, 250, 50, "player", 1, "Warrior", 100,dam)  
     this.add.existing(warrior);
-    var mage = new PlayerCharacter(this, 250, 100, "player", 4, "Jessi", 80, 8);
+    var mage = new PlayerCharacter(this, 250, 100, "player", 4, "Jessi", 50, dam2);
     this.add.existing(mage);            
-    var dragonblue = new Enemy(this, 50, 50, "dragonblue", null, "Dragon", 50, 3);
+    var dragonblue = new Enemy(this, 50, 50, "dragonblue", null, "Dragon", 90, dam3);
     this.add.existing(dragonblue);
-    var dragonOrange = new Enemy(this, 50, 100, "dragonorrange", null,"Dragon2", 50, 3);
+    var dragonOrange = new Enemy(this, 50, 100, "dragonorrange", null,"Dragon2", 80, dam4);
     this.add.existing(dragonOrange);
 
     this.heroes = [ warrior, mage ];
@@ -26,7 +30,7 @@ export var BattleScene = new Phaser.Class({
     this.units = this.heroes.concat(this.enemies);
     this.index = -1; 
     this.scene.run("UIScene");        
-  },
+  }
   nextTurn() {  
     if(this.checkEndBattle()) {           
         this.endBattle();
@@ -48,7 +52,7 @@ export var BattleScene = new Phaser.Class({
         this.units[this.index].attack(this.heroes[r]);  
         this.time.addEvent({ delay: 2000, callback: this.nextTurn, callbackScope: this });
     }
-  },     
+  } 
   checkEndBattle() {        
     var victory = true;
     for(var i = 0; i < this.enemies.length; i++) {
@@ -61,13 +65,13 @@ export var BattleScene = new Phaser.Class({
             gameOver = false;
     }
     return victory || gameOver;
-  },
+  }
   receivePlayerSelection(action, target) {
     if(action == "attack") {            
         this.units[this.index].attack(this.enemies[target]);              
     }
     this.time.addEvent({ delay: 3000, callback: this.nextTurn, callbackScope: this });        
-  },    
+  }  
   endBattle() {       
     this.heroes.length = 0;
     this.enemies.length = 0;
@@ -78,5 +82,5 @@ export var BattleScene = new Phaser.Class({
     this.scene.sleep('UIScene');
     this.scene.switch('WorldScene');
   }
-});
+};
 

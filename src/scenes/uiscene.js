@@ -1,14 +1,13 @@
+import 'phaser';
 import {Message} from './messaje'
 import {HeroesMenu} from './heroesmenu'
 import {ActionsMenu} from './actionsmenu'
 import {EnemiesMenu} from './enemiesmenu'
-export var UIScene = new Phaser.Class({
 
-  Extends: Phaser.Scene,
-  initialize:
-  function UIScene (){
-    Phaser.Scene.call(this, { key: "UIScene" });
-  },
+export default class UIScene extends Phaser.Scene {
+  constructor () {
+    super('UIScene');
+  }
 
   create(){    
     this.graphics = this.add.graphics();
@@ -40,36 +39,36 @@ export var UIScene = new Phaser.Class({
     this.message = new Message(this, this.battleScene.events);
     this.add.existing(this.message);        
     this.createMenu();     
-  },
+  }
   createMenu() {
       this.remapHeroes();
       this.remapEnemies();
       this.battleScene.nextTurn(); 
-  },
+  }
   onEnemy(index) {
     this.heroesMenu.deselect();
     this.actionsMenu.deselect();
     this.enemiesMenu.deselect();
     this.currentMenu = null;
     this.battleScene.receivePlayerSelection("attack", index);   
-  },
+  }
   onPlayerSelect(id) {
     this.heroesMenu.select(id);
     this.actionsMenu.select(0);
     this.currentMenu = this.actionsMenu;
-  },
+  }
   onSelectedAction() {
     this.currentMenu = this.enemiesMenu;
     this.enemiesMenu.select(0);
-  },
+  }
   remapHeroes() {
     var heroes = this.battleScene.heroes;
     this.heroesMenu.remap(heroes);
-  },
+  }
   remapEnemies() {
     var enemies = this.battleScene.enemies;
     this.enemiesMenu.remap(enemies);
-  },
+  }
   onKeyInput(event) {
     if(this.currentMenu && this.currentMenu.selected) {
       if(event.code === "ArrowUp") {
@@ -82,5 +81,5 @@ export var UIScene = new Phaser.Class({
           this.currentMenu.confirm();
       } 
     }
-  },
-});
+  }
+};
