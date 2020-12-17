@@ -1,3 +1,5 @@
+let text;
+
 export default class WorldScene extends Phaser.Scene {
   
   constructor () {
@@ -56,6 +58,11 @@ export default class WorldScene extends Phaser.Scene {
     }        
     this.physics.add.overlap(this.player, this.spawns, this.onMeetEnemy, false, this);
     this.sys.events.on('wake', this.wake, this);
+    text = this.add.text(3, 3, "score:"+this.sys.game.globals.score.winings);
+  }
+
+  updatescore(){
+    text.setText("score:"+this.sys.game.globals.score.winings);
   }
   wake() {
     this.cursors.left.reset();
@@ -70,7 +77,8 @@ export default class WorldScene extends Phaser.Scene {
     this.input.stopPropagation();
     this.scene.switch('BattleScene');                
   }
-  update(time, delta){             
+  update(time, delta){   
+    this.updatescore();         
     this.player.body.setVelocity(0);
     if (this.cursors.left.isDown){
       this.player.body.setVelocityX(-80);

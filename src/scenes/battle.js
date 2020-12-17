@@ -9,7 +9,8 @@ export default class BattleScene extends Phaser.Scene {
   create(){
     this.cameras.main.setBackgroundColor("rgba(0, 200, 0, 0.5)");
     this.startBattle();
-    this.sys.events.on('wake', this.startBattle, this);             
+    this.sys.events.on('wake', this.startBattle, this);
+              
   }
   startBattle() {
     var dam = Math.floor(Math.random() * 16) + 10;
@@ -18,11 +19,11 @@ export default class BattleScene extends Phaser.Scene {
     var dam4 = Math.floor(Math.random() * 16) + 10;
     var warrior = new PlayerCharacter(this, 250, 50, "player", 1, "Warrior", 100,dam)  
     this.add.existing(warrior);
-    var mage = new PlayerCharacter(this, 250, 100, "player", 4, "Jessi", 50, dam2);
+    var mage = new PlayerCharacter(this, 250, 100, "player", 4, "Jessi", 200, dam2);
     this.add.existing(mage);            
-    var dragonblue = new Enemy(this, 50, 50, "dragonblue", null, "Dragon", 90, dam3);
+    var dragonblue = new Enemy(this, 50, 50, "dragonblue", null, "Dragon", 20, dam3);
     this.add.existing(dragonblue);
-    var dragonOrange = new Enemy(this, 50, 100, "dragonorrange", null,"Dragon2", 80, dam4);
+    var dragonOrange = new Enemy(this, 50, 100, "dragonorrange", null,"Dragon2", 20, dam4);
     this.add.existing(dragonOrange);
 
     this.heroes = [ warrior, mage ];
@@ -63,6 +64,11 @@ export default class BattleScene extends Phaser.Scene {
     for(var i = 0; i < this.heroes.length; i++) {
         if(this.heroes[i].living)
             gameOver = false;
+    }
+    if(victory){
+      this.sys.game.globals.score.plus();
+      var score = this.sys.game.globals.score;
+      console.log(score)
     }
     return victory || gameOver;
   }

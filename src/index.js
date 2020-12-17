@@ -10,13 +10,15 @@ import TitleScene from './scenes/TitleScene'
 import Model from './Model';
 import Preloader from './scenes/PreloaderScene'
 import CreditsScene from './scenes/CreditsScene'
+import Score from './scores'
 
 class Game extends Phaser.Game {
   constructor () {
-
     super(config);
+    
+    let score = new Score();
     const model = new Model();
-    this.globals = { model, bgMusic: null };
+    this.globals = { model, bgMusic: null, score };
 
     this.scene.add('Preloader', Preloader)
     this.scene.add('Credits', CreditsScene)
@@ -30,5 +32,4 @@ class Game extends Phaser.Game {
 
   }
 }
-
 window.game = new Game();
