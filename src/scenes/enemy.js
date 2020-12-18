@@ -5,5 +5,7 @@ export var Enemy = new Phaser.Class({
   initialize:
   function Enemy(scene, x, y, texture, frame, type, hp, damage) {
     Unit.call(this, scene, x, y, texture, frame, type, hp, damage);
+    this.flipX = true;      
+    this.setScale(2);
   }
 });

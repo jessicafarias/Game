@@ -7,7 +7,8 @@ export var Unit = new Phaser.Class({
     this.maxHp = this.hp = hp;
     this.damage = damage;
     this.living = true;         
-    this.menuItem = null;
+    //this.menuItem = null;
+    
   },
   setMenuItem(item) {
     this.menuItem = item;
@@ -26,7 +27,10 @@ export var Unit = new Phaser.Class({
       this.menuItem.unitKilled();
       this.living = false;
       this.visible = false;   
-      this.menuItem = null;
+      
+      //this.texture = 'player';
+      //this.frame=1;
+      //this.menuItem = null;
     }
   }    
 });

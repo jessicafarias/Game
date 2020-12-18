@@ -49,7 +49,7 @@ export default class UIScene extends Phaser.Scene {
     this.heroesMenu.deselect();
     this.actionsMenu.deselect();
     this.enemiesMenu.deselect();
-    this.currentMenu = null;
+    //this.currentMenu = null;
     this.battleScene.receivePlayerSelection("attack", index);   
   }
   onPlayerSelect(id) {
@@ -77,7 +77,7 @@ export default class UIScene extends Phaser.Scene {
           this.currentMenu.moveSelectionDown();
       } else if(event.code === "ArrowRight" || event.code === "Shift") {
 
-      } else if(event.code === "Space" || event.code === "ArrowLeft") {
+      } else if(event.code === "Space") {
           this.currentMenu.confirm();
       } 
     }

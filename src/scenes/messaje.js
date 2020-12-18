@@ -22,7 +22,7 @@ export var Message = new Phaser.Class({
     this.hideEvent = this.scene.time.addEvent({ delay: 1000, callback: this.hideMessage, callbackScope: this });
   },
   hideMessage() {
-    this.hideEvent = null;
+    //this.hideEvent = null;
     this.visible = false;
   }
 });

@@ -13,8 +13,8 @@ export var MenuItem = new Phaser.Class({
     this.setColor("#ffffff");
   },
   unitKilled() {
-    this.active = false;
-    this.visible = false;
+    //this.active = false;
+    this.visible = true;
   }
   
 });

@@ -63,6 +63,9 @@ export default class WorldScene extends Phaser.Scene {
 
   updatescore(){
     text.setText("score:"+this.sys.game.globals.score.winings);
+    /*if(this.sys.game.globals.score.gameover){
+      console.log("gameover!")
+    }*/
   }
   wake() {
     this.cursors.left.reset();
@@ -75,10 +78,11 @@ export default class WorldScene extends Phaser.Scene {
     zone.y = Phaser.Math.RND.between(0, this.physics.world.bounds.height);
     this.cameras.main.shake(300);
     this.input.stopPropagation();
-    this.scene.switch('BattleScene');                
+    this.scene.switch('BattleScene');
+
   }
   update(time, delta){   
-    this.updatescore();         
+    this.updatescore();
     this.player.body.setVelocity(0);
     if (this.cursors.left.isDown){
       this.player.body.setVelocityX(-80);
