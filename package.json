@@ -4,7 +4,9 @@
   "description": "RGP game",
   "main": "index.js",
   "dependencies": {
-    "phaser": "^3.0.0"
+    "node-fetch": "^2.6.1",
+    "phaser": "^3.0.0",
+    "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
     "babel-core": "6",
