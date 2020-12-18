@@ -67,8 +67,6 @@ export default class BattleScene extends Phaser.Scene {
     }
     if(victory){
       this.sys.game.globals.score.plus();
-      var score = this.sys.game.globals.score;
-      console.log(score)
     }
     return victory || gameOver;
   }

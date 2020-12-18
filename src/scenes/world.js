@@ -12,8 +12,8 @@ export default class WorldScene extends Phaser.Scene {
   create(){
     var map = this.make.tilemap({ key: 'map' });
     var tiles = map.addTilesetImage('spritesheet', 'tiles');
-    var grass = map.createStaticLayer('Grass', tiles, 0, 0);
-    var obstacles = map.createStaticLayer('Obstacles', tiles, 0, 0);
+    var grass = map.createLayer('Grass', tiles, 0, 0);
+    var obstacles = map.createLayer('Obstacles', tiles, 0, 0);
     obstacles.setCollisionByExclusion([-1]);
     
     this.anims.create({

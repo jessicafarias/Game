@@ -1,7 +1,6 @@
 import 'phaser';
 import WorldScene from './scenes/world';
 import BootScene from './scenes/BootScene';
-//import BootScene from './scenes/simple-scene2';
 import UIScene from './scenes/uiscene'
 import BattleScene from './scenes/battle'
 import SimpleScene2 from './scenes/simple-scene2'
