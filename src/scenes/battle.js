@@ -20,13 +20,13 @@ export default class BattleScene extends Phaser.Scene {
     var dam4 = Math.floor(Math.random() * 16) + 10;
 
 
-    dragonblue = new Enemy(this, 50, 50, "dragonblue", null, "Dragon", 30, dam3);
+    dragonblue = new Enemy(this, 50, 50, "dragonblue", null, "Dragon", 20, dam3);
     this.add.existing(dragonblue);
-    dragonOrange = new Enemy(this, 50, 100, "dragonorrange", null,"Dragon2", 20, dam4);
+    dragonOrange = new Enemy(this, 50, 100, "dragonorrange", null,"Dragon2", 50, dam4);
     this.add.existing(dragonOrange);
-    mage = new PlayerCharacter(this, 250, 100, "player", 4, "Jessi", 20, dam2);
+    mage = new PlayerCharacter(this, 250, 100, "player", 4, "Jessi", 30, dam2);
     this.add.existing(mage);            
-    warrior = new PlayerCharacter(this, 250, 50, "player", 1, "Warrior", 10,dam)  
+    warrior = new PlayerCharacter(this, 250, 50, "player", 1, "Warrior", 40,dam)  
     this.add.existing(warrior);
 
     const config2 = {
@@ -40,6 +40,7 @@ export default class BattleScene extends Phaser.Scene {
     b= this.add.sprite(50, 100, 'boom').play('explode2');
     c= this.add.sprite(250, 100, 'boom').play('explode2');
     d= this.add.sprite(250, 50, 'boom').play('explode2');
+    
     a.visible=false;
     b.visible=false;
     c.visible=false;
@@ -99,13 +100,16 @@ export default class BattleScene extends Phaser.Scene {
     this.time.addEvent({ delay: 3000, callback: this.nextTurn, callbackScope: this });        
   }  
   endBattle() {       
+    a.destroy();
+    b.destroy();
+    c.destroy();
+    d.destroy();
+
     this.heroes.length = 0;
     this.enemies.length = 0;
     for(var i = 0; i < this.units.length; i++) {
         this.units[i].destroy();            
     }
-    a.visible=false;
-    b.visible=false;
     this.units.length = 0;
     this.scene.sleep('UIScene');
     this.scene.switch('WorldScene');
