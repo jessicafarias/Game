@@ -1,10 +1,11 @@
 import Phaser from 'phaser';
 import submit from '../Leaderboard/postscore';
-
+const {GetValue} = Phaser.Utils.Objects;
 const COLOR_PRIMARY = 0x4e342e;
 const COLOR_LIGHT = 0x7b5e57;
 let score;
 let done = false;
+
 var CreateLoginDialog = function (scene, config, onSubmit) {
   let username = GetValue(config, 'username', '');
   const title = GetValue(config, 'title', 'Welcome');
@@ -12,7 +13,6 @@ var CreateLoginDialog = function (scene, config, onSubmit) {
   const y = GetValue(config, 'y', 0);
   const width = GetValue(config, 'width', undefined);
   const height = GetValue(config, 'height', undefined);
-  onSubmit+1;
 
   const background = scene.rexUI.add.roundRectangle(0, 0, 10, 10, 10, COLOR_PRIMARY);
   const titleField = scene.add.text(0, 0, title);
@@ -67,7 +67,6 @@ var CreateLoginDialog = function (scene, config, onSubmit) {
     .layout();
   return loginDialog;
 };
-
 export default class GameOver extends Phaser.Scene {
   constructor() {
     super('GameOver');
@@ -85,9 +84,8 @@ export default class GameOver extends Phaser.Scene {
 
   create() {
     score = this.sys.game.globals.score.winings;
-
     this.add.text(100, 30, 'Game over', { color: 'white', fontSize: '20px ' });
-    CreateLoginDialog(this, {
+    const loginDialog = CreateLoginDialog(this, {
       x: 150,
       y: 120,
       title: `Your score: ${score}`,
@@ -96,7 +94,6 @@ export default class GameOver extends Phaser.Scene {
       print.text += `${username}\n`;
     }).popUp(500);
   }
-
   update() {
     if ((score === 0) || done) {
       this.sys.game.globals.score.restart();
@@ -105,4 +102,3 @@ export default class GameOver extends Phaser.Scene {
   }
 }
 
-const { GetValue } = Phaser.Utils.Objects;
