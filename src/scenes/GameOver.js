@@ -1,3 +1,4 @@
+import Phaser from 'phaser';
 import submit from '../Leaderboard/postscore';
 
 const COLOR_PRIMARY = 0x4e342e;
@@ -24,7 +25,7 @@ export default class GameOver extends Phaser.Scene {
     score = this.sys.game.globals.score.winings;
 
 
-    const text = this.add.text(100, 30, 'Game over', { color: 'white', fontSize: '20px ' });
+    this.add.text(100, 30, 'Game over', { color: 'white', fontSize: '20px ' });
     const loginDialog = CreateLoginDialog(this, {
       x: 150,
       y: 120,
@@ -36,7 +37,7 @@ export default class GameOver extends Phaser.Scene {
   }
 
   update() {
-    if ((score == 0) || done) {
+    if ((score === 0) || done) {
       this.sys.game.globals.score.restart();
       this.scene.start('ScoreScene');
     }

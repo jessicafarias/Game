@@ -1,6 +1,4 @@
-import 'phaser';
-import submit from './Leaderboard/postscore';
-
+import Phaser from 'phaser';
 import WorldScene from './scenes/world';
 import BootScene from './scenes/BootScene';
 import UIScene from './scenes/uiscene';

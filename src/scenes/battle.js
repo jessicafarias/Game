@@ -20,9 +20,9 @@ export default class BattleScene extends Phaser.Scene {
     const dam4 = Math.floor(Math.random() * 16) + 10;
 
 
-    dragonblue = new Enemy(this, 50, 50, 'dragonblue', null, 'Dragon', 20, dam3);
+    dragonblue = new Enemy(this, 50, 50, 'dragonblue', null, 'Dragon', 10, dam3);
     this.add.existing(dragonblue);
-    dragonOrange = new Enemy(this, 50, 100, 'dragonorrange', null, 'Dragon2', 60, dam4);
+    dragonOrange = new Enemy(this, 50, 100, 'dragonorrange', null, 'Dragon2', 10, dam4);
     this.add.existing(dragonOrange);
     mage = new PlayerCharacter(this, 250, 100, 'player', 4, 'Jessi', 30, dam2);
     this.add.existing(mage);
@@ -79,14 +79,14 @@ export default class BattleScene extends Phaser.Scene {
 
   checkEndBattle() {
     let victory = true;
-    for (var i = 0; i < this.enemies.length; i += 1) {
+    for (let i = 0; i < this.enemies.length; i += 1) {
       if (this.enemies[i].living) {
         victory = false;
       }
     }
     let gameOver = true;
-    for (var i = 0; i < this.heroes.length; i += 1) {
-      if (this.heroes[i].living) {
+    for (let j = 0; j < this.heroes.length; j += 1) {
+      if (this.heroes[j].living) {
         gameOver = false;
       }
     }

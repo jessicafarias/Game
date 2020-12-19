@@ -10,6 +10,6 @@ export default function load() {
     };
     getCats();
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 }

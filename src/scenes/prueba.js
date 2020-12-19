@@ -32,8 +32,6 @@ export default class Demo extends Phaser.Scene {
       print.text += `${username}\n`;
     }).popUp(500);
   }
-
-  update() { }
 }
 
 const { GetValue } = Phaser.Utils.Objects;
