@@ -16,6 +16,7 @@ import Model from './Model';
 import Preloader from './scenes/PreloaderScene'
 import CreditsScene from './scenes/CreditsScene'
 import Score from './scores'
+import GameOver from './scenes/GameOver'
 
 class Game extends Phaser.Game {
   constructor () {
@@ -33,6 +34,7 @@ class Game extends Phaser.Game {
     this.scene.add('WorldScene', WorldScene);
     this.scene.add('BattleScene', BattleScene);
     this.scene.add('UIScene', UIScene);
+    this.scene.add('GameOver', GameOver);
     this.scene.start('Preloader');
 
   }

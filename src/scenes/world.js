@@ -66,6 +66,9 @@ export default class WorldScene extends Phaser.Scene {
     /*if(this.sys.game.globals.score.gameover){
       console.log("gameover!")
     }*/
+    if(this.sys.game.globals.score.status){
+      this.scene.start("GameOver");
+    }
   }
   wake() {
     this.cursors.left.reset();
