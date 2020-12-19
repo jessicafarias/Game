@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
-import { PlayerCharacter } from './player';
-import { Enemy } from './enemy';
+import PlayerCharacter from './player';
+import Enemy from './enemy';
 
 let a; let b; let c; let d; let dragonblue; let dragonOrange; let warrior; let mage;
 export default class BattleScene extends Phaser.Scene {

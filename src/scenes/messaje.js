@@ -1,9 +1,8 @@
 import Phaser from 'phaser';
 
-export var Message = new Phaser.Class({
-  Extends: Phaser.GameObjects.Container,
-  initialize(scene, events) {
-    Phaser.GameObjects.Container.call(this, scene, 160, 30);
+export default class Message extends Phaser.GameObjects.Container {
+  constructor(scene, events) {
+    super(scene, 160, 30);
     const graphics = this.scene.add.graphics();
     this.add(graphics);
     graphics.lineStyle(1, 0xffffff, 0.8);
@@ -17,14 +16,14 @@ export var Message = new Phaser.Class({
     this.text.setOrigin(0.5);
     events.on('Message', this.showMessage, this);
     this.visible = false;
-  },
+  }
   showMessage(text) {
     this.text.setText(text);
     this.visible = true;
     if (this.hideEvent) this.hideEvent.remove(false);
     this.hideEvent = this.scene.time.addEvent({ delay: 1000, callback: this.hideMessage, callbackScope: this });
-  },
+  }
   hideMessage() {
     this.visible = false;
-  },
-});
+  }
+}
