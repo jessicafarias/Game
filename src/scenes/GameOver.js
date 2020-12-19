@@ -5,46 +5,6 @@ const COLOR_PRIMARY = 0x4e342e;
 const COLOR_LIGHT = 0x7b5e57;
 let score;
 let done = false;
-
-export default class GameOver extends Phaser.Scene {
-  constructor() {
-    super('GameOver');
-  }
-
-  preload() {
-    this.load.image('user', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/assets/images/person.png');
-
-    this.load.scenePlugin({
-      key: 'rexuiplugin',
-      url: 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js',
-      sceneKey: 'rexUI',
-    });
-  }
-
-  create() {
-    score = this.sys.game.globals.score.winings;
-
-
-    this.add.text(100, 30, 'Game over', { color: 'white', fontSize: '20px ' });
-    const loginDialog = CreateLoginDialog(this, {
-      x: 150,
-      y: 120,
-      title: `Your score: ${score}`,
-      username: 'name',
-    }).on('login', (username) => {
-      print.text += `${username}\n`;
-    }).popUp(500);
-  }
-
-  update() {
-    if ((score === 0) || done) {
-      this.sys.game.globals.score.restart();
-      this.scene.start('ScoreScene');
-    }
-  }
-}
-
-const { GetValue } = Phaser.Utils.Objects;
 var CreateLoginDialog = function (scene, config, onSubmit) {
   let username = GetValue(config, 'username', '');
   const title = GetValue(config, 'title', 'Welcome');
@@ -52,6 +12,7 @@ var CreateLoginDialog = function (scene, config, onSubmit) {
   const y = GetValue(config, 'y', 0);
   const width = GetValue(config, 'width', undefined);
   const height = GetValue(config, 'height', undefined);
+  onSubmit+1;
 
   const background = scene.rexUI.add.roundRectangle(0, 0, 10, 10, 10, COLOR_PRIMARY);
   const titleField = scene.add.text(0, 0, title);
@@ -106,3 +67,42 @@ var CreateLoginDialog = function (scene, config, onSubmit) {
     .layout();
   return loginDialog;
 };
+
+export default class GameOver extends Phaser.Scene {
+  constructor() {
+    super('GameOver');
+  }
+
+  preload() {
+    this.load.image('user', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/assets/images/person.png');
+
+    this.load.scenePlugin({
+      key: 'rexuiplugin',
+      url: 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js',
+      sceneKey: 'rexUI',
+    });
+  }
+
+  create() {
+    score = this.sys.game.globals.score.winings;
+
+    this.add.text(100, 30, 'Game over', { color: 'white', fontSize: '20px ' });
+    CreateLoginDialog(this, {
+      x: 150,
+      y: 120,
+      title: `Your score: ${score}`,
+      username: 'name',
+    }).on('login', (username) => {
+      print.text += `${username}\n`;
+    }).popUp(500);
+  }
+
+  update() {
+    if ((score === 0) || done) {
+      this.sys.game.globals.score.restart();
+      this.scene.start('ScoreScene');
+    }
+  }
+}
+
+const { GetValue } = Phaser.Utils.Objects;

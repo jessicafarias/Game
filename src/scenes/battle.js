@@ -11,6 +11,7 @@ export default class BattleScene extends Phaser.Scene {
   create() {
     this.startBattle();
     this.sys.events.on('wake', this.startBattle, this);
+    this.cameras.main.setBackgroundColor('rgba(0, 200, 0, 0.5)');
   }
 
   startBattle() {
@@ -19,14 +20,13 @@ export default class BattleScene extends Phaser.Scene {
     const dam3 = Math.floor(Math.random() * 16) + 10;
     const dam4 = Math.floor(Math.random() * 16) + 10;
 
-
     dragonblue = new Enemy(this, 50, 50, 'dragonblue', null, 'Dragon', 10, dam3);
     this.add.existing(dragonblue);
-    dragonOrange = new Enemy(this, 50, 100, 'dragonorrange', null, 'Dragon2', 10, dam4);
+    dragonOrange = new Enemy(this, 50, 100, 'dragonorrange', null, 'Dragon2', 50, dam4);
     this.add.existing(dragonOrange);
-    mage = new PlayerCharacter(this, 250, 100, 'player', 4, 'Jessi', 30, dam2);
+    mage = new PlayerCharacter(this, 250, 100, 'player', 4, 'friend', 10, dam2);
     this.add.existing(mage);
-    warrior = new PlayerCharacter(this, 250, 50, 'player', 1, 'Warrior', 50, dam);
+    warrior = new PlayerCharacter(this, 250, 50, 'player', 1, 'You', 50, dam);
     this.add.existing(warrior);
 
     const config2 = {
@@ -95,7 +95,7 @@ export default class BattleScene extends Phaser.Scene {
   }
 
   receivePlayerSelection(action, target) {
-    if (action == 'attack') {
+    if (action === 'attack') {
       this.units[this.index].attack(this.enemies[target]);
     }
     this.time.addEvent({ delay: 3000, callback: this.nextTurn, callbackScope: this });
@@ -103,12 +103,10 @@ export default class BattleScene extends Phaser.Scene {
 
   endBattle() {
     if (a.visible && b.visible) {
-      this.sys.game.globals.score.plus();
-    }
+      this.sys.game.globals.score.plus(); }
 
     if (c.visible && d.visible) {
-      this.sys.game.globals.score.gameover();
-    }
+      this.sys.game.globals.score.gameover(); }
 
     a.destroy();
     b.destroy();
@@ -117,7 +115,7 @@ export default class BattleScene extends Phaser.Scene {
 
     this.heroes.length = 0;
     this.enemies.length = 0;
-    for (let i = 0; i < this.units.length; i++) {
+    for (let i = 0; i < this.units.length; i+=1) {
       this.units[i].destroy();
     }
     this.units.length = 0;

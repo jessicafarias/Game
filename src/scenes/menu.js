@@ -4,7 +4,7 @@ import { MenuItem } from './menuitem';
 export const Menu = new Phaser.Class({
   Extends: Phaser.GameObjects.Container,
 
-  initialize(x, y, scene, heroes) {
+  initialize(x, y, scene) {
     Phaser.GameObjects.Container.call(this, scene, x, y);
     this.menuItems = [];
     this.menuItemIndex = 0;

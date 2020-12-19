@@ -10,7 +10,7 @@ export default function getBest() {
         mode: 'cors',
         redirect: 'follow',
       });
-      return await response.json();
+      return response.json();
     }
     json = getData2();
   } catch (error) {
