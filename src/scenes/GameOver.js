@@ -1,3 +1,4 @@
+import submit from '../Leaderboard/postscore';
 const COLOR_PRIMARY = 0x4e342e;
 const COLOR_LIGHT = 0x7b5e57;
 var score;
@@ -19,6 +20,10 @@ export default class GameOver extends Phaser.Scene {
 
   create() {
     score = this.sys.game.globals.score.winings;
+    if(score==0){
+      this.scene.start("Credits")
+      this.sys.game.globals.score.restart();
+    }
 
     var text = this.add.text(100, 30, 'Game over', { color: 'white', fontSize: '20px '});
     var loginDialog = CreateLoginDialog(this, {
@@ -71,8 +76,8 @@ var CreateLoginDialog = function (scene, config, onSubmit) {
         .setInteractive()
         .on('pointerdown', function () {
             loginDialog.emit('login', username);
-            console.log(username);
-            console.log(score);
+            submit(username,score);
+            //this.scene.start("ScoreScene");
         });
 
     var loginDialog = scene.rexUI.add.sizer({

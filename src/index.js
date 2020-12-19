@@ -1,8 +1,5 @@
 import 'phaser';
 require("regenerator-runtime/runtime");
-import load from './Leaderboard/leaderboard'
-import load2 from './Leaderboard/test'
-import load3 from './Leaderboard/results'
 import submit from './Leaderboard/postscore'
 
 import WorldScene from './scenes/world';

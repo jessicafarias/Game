@@ -14,4 +14,9 @@ export default class Score {
     this.status=true;
   }
 
+  restart(){
+    this.status=false;
+    this.winings=0;
+  }
+
 }

@@ -1,11 +1,11 @@
 //Call to submit name and score
 require("regenerator-runtime/runtime");
 
-export default function submit(){
+export default function submit(username, score){
   const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/TpWk1ZvKQyd7ON6jgZbj/scores'
   const data = { 
-    "user": "Jessica",
-    "score": 4
+    "user": ""+username+"",
+    "score": score
   }
 
   try{
