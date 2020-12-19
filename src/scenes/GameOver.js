@@ -2,6 +2,7 @@ import submit from '../Leaderboard/postscore';
 const COLOR_PRIMARY = 0x4e342e;
 const COLOR_LIGHT = 0x7b5e57;
 var score;
+var done=false;
 
 export default class GameOver extends Phaser.Scene {
   constructor () {
@@ -20,10 +21,7 @@ export default class GameOver extends Phaser.Scene {
 
   create() {
     score = this.sys.game.globals.score.winings;
-    if(score==0){
-      this.scene.start("Credits")
-      this.sys.game.globals.score.restart();
-    }
+
 
     var text = this.add.text(100, 30, 'Game over', { color: 'white', fontSize: '20px '});
     var loginDialog = CreateLoginDialog(this, {
@@ -35,7 +33,12 @@ export default class GameOver extends Phaser.Scene {
           print.text += `${username}\n`;
       }).popUp(500);
   }
-    update() { }
+    update() {
+      if((score==0)||done){
+        this.sys.game.globals.score.restart();
+        this.scene.start("ScoreScene")
+      }
+    }
 }
 
 const GetValue = Phaser.Utils.Objects.GetValue;
@@ -61,7 +64,7 @@ var CreateLoginDialog = function (scene, config, onSubmit) {
             var config = {
                 onTextChanged: function(textObject, text) {
                     username = text;
-                    textObject.text = text;
+                    textObject.text = text;  
                 }
             }
             scene.rexUI.edit(userNameField.getElement('text'), config);
@@ -76,8 +79,8 @@ var CreateLoginDialog = function (scene, config, onSubmit) {
         .setInteractive()
         .on('pointerdown', function () {
             loginDialog.emit('login', username);
-            submit(username,score);
-            //this.scene.start("ScoreScene");
+            //submit(username,score);
+            done=true;
         });
 
     var loginDialog = scene.rexUI.add.sizer({

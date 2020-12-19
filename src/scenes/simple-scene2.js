@@ -7,10 +7,10 @@ export default class SimpleScene2 extends Phaser.Scene {
   }
 
   create() {
-    this.add.text(30, 70, "Hello Im Mr.Coque");
-    this.add.text(30, 90, 'UseArrows and space');
-    this.add.text(20, 110, 'to control the game!');
-    this.add.image(100, 200, 'cokecan');
+    this.add.text(100, 70, "Hello Im Mr.Coque");
+    this.add.text(100, 90, 'UseArrows and space');
+    this.add.text(100, 110, 'to control the game!');
+    this.add.image(120, 200, 'cokecan');
     this.time.addEvent({ delay: 4000, callback: this.goto, callbackScope: this });
   }
 

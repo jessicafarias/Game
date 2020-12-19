@@ -14,6 +14,7 @@ import Preloader from './scenes/PreloaderScene'
 import CreditsScene from './scenes/CreditsScene'
 import Score from './scores'
 import GameOver from './scenes/GameOver'
+import ScoreScene from './scenes/ScoreScene'
 
 
 class Game extends Phaser.Game {
@@ -32,6 +33,7 @@ class Game extends Phaser.Game {
     this.scene.add('WorldScene', WorldScene);
     this.scene.add('BattleScene', BattleScene);
     this.scene.add('UIScene', UIScene);
+    this.scene.add('ScoreScene',ScoreScene);
     this.scene.add('GameOver', GameOver);
     this.scene.start('Preloader');
 
