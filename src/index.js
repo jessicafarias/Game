@@ -41,8 +41,3 @@ class Game extends Phaser.Game {
 }
 const gam = new Game();
 window.game = gam;
-// window.onload = submit;
-// load3;
-// window.onload = load3;
-// window.onload = load2;
-// Example POST method implementation:

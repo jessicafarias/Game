@@ -85,7 +85,7 @@ var CreateLoginDialog = function (scene, config, onSubmit) {
     .setInteractive()
     .on('pointerdown', () => {
       loginDialog.emit('login', username);
-      submit(username,score);
+      submit(username, score);
       done = true;
     });
 

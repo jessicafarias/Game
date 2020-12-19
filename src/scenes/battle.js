@@ -9,7 +9,6 @@ export default class BattleScene extends Phaser.Scene {
   }
 
   create() {
-    // this.cameras.main.setBackgroundColor("rgba(0, 200, 0, 0.5)");
     this.startBattle();
     this.sys.events.on('wake', this.startBattle, this);
   }

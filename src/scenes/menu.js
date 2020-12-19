@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import { MenuItem } from './menuitem';
 
-export var Menu = new Phaser.Class({
+export const Menu = new Phaser.Class({
   Extends: Phaser.GameObjects.Container,
 
   initialize(x, y, scene, heroes) {

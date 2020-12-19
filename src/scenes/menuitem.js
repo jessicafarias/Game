@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-export var MenuItem = new Phaser.Class({
+export const MenuItem = new Phaser.Class({
   Extends: Phaser.GameObjects.Text,
   initialize(x, y, text, scene) {
     Phaser.GameObjects.Text.call(this, scene, x, y, text,
@@ -15,7 +15,6 @@ export var MenuItem = new Phaser.Class({
     this.setColor('#ffffff');
   },
   unitKilled() {
-    // this.active = false;
     this.visible = true;
   },
 

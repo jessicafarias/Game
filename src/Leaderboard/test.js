@@ -1,4 +1,3 @@
-// Call once to create new tablescores
 require('regenerator-runtime/runtime');
 
 export default function load2() {
@@ -19,12 +18,9 @@ export default function load2() {
     }
     postData(url, data)
       .then(data => {
-        console.log(data); // JSON data parsed by `data.json()` call
+        console.log(data);
       });
   } catch (error) {
     console.log(error);
   }
 }
-
-// TpWk1ZvKQyd7ON6jgZbj
-// "Game with ID: NykAZF4H1k3ktkkAXzkv added."

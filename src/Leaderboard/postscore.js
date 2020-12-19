@@ -1,4 +1,3 @@
-// Call to submit name and score
 require('regenerator-runtime/runtime');
 
 export default function submit(username, score) {
@@ -23,7 +22,7 @@ export default function submit(username, score) {
     }
     postData(url, data)
       .then(data => {
-        console.log(data); // JSON data parsed by `data.json()` call
+        console.log(data);
       });
   } catch (error) {
     console.log(error);

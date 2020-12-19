@@ -1,4 +1,3 @@
-// Get json table of scores
 require('regenerator-runtime/runtime');
 
 export default function getBest() {

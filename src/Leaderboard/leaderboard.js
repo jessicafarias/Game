@@ -1,4 +1,3 @@
-// Display random funny cats
 require('regenerator-runtime/runtime');
 
 export default function load() {

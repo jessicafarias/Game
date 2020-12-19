@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-// import 'phaser';
 
 export default class SimpleScene2 extends Phaser.Scene {
   preload() {
