@@ -1,21 +1,20 @@
-import 'phaser';
-import getBest from '../Leaderboard/results'
+import Phaser from 'phaser';
+import getBest from '../Leaderboard/results';
 
 export default class ScoreScene extends Phaser.Scene {
-  constructor () {
-      super('ScoreScene');
+  constructor() {
+    super('ScoreScene');
   }
 
   create() {
-
-    this.add.text(75, 20, "Best 8 Players", { fontSize: '20px', fill: '#db2e00' });
+    this.add.text(75, 20, 'Best 8 Players', { fontSize: '20px', fill: '#db2e00' });
 
     getBest().then(data => {
-      var top = data.result.sort((a, b) => {return b.score-a.score})
+      const top = data.result.sort((a, b) => b.score - a.score);
       console.log();
       let a = 30;
-      for(var i =0; i<top.length; i++){
-        a+=20;
+      for (let i = 0; i < top.length; i += 1) {
+        a += 20;
         this.add.text(50, a, top[i].user);
         this.add.text(250, a, top[i].score);
       }
@@ -23,7 +22,7 @@ export default class ScoreScene extends Phaser.Scene {
     this.time.addEvent({ delay: 5000, callback: this.goto, callbackScope: this });
   }
 
-  goto(){
+  goto() {
     this.scene.start('Title');
   }
 }

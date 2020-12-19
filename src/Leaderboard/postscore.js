@@ -1,23 +1,23 @@
-//Call to submit name and score
-require("regenerator-runtime/runtime");
+// Call to submit name and score
+require('regenerator-runtime/runtime');
 
-export default function submit(username, score){
-  const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/TpWk1ZvKQyd7ON6jgZbj/scores'
-  const data = { 
-    "user": ""+username+"",
-    "score": score
-  }
+export default function submit(username, score) {
+  const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/TpWk1ZvKQyd7ON6jgZbj/scores';
+  const data = {
+    user: `${username}`,
+    score,
+  };
 
-  try{
+  try {
     async function postData(url, data) {
       const response = await fetch(url, {
-        method: 'POST', 
+        method: 'POST',
         mode: 'cors',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
         redirect: 'follow',
-        body: JSON.stringify(data) 
+        body: JSON.stringify(data),
       });
       return response.json();
     }
@@ -25,7 +25,7 @@ export default function submit(username, score){
       .then(data => {
         console.log(data); // JSON data parsed by `data.json()` call
       });
-  }catch(error){
-    console.log(error)
+  } catch (error) {
+    console.log(error);
   }
 }

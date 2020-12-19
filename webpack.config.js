@@ -6,13 +6,13 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'app.bundle.js'
+    filename: 'app.bundle.js',
   },
   /*
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
-  },*/
+  }, */
   module: {
     rules: [
       {
@@ -21,11 +21,11 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env']
-          }
-        }
-      }
-    ]
+            presets: ['env'],
+          },
+        },
+      },
+    ],
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'build'),
@@ -33,7 +33,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'typeof CANVAS_RENDERER': JSON.stringify(true),
-      'typeof WEBGL_RENDERER': JSON.stringify(true)
-    })
-  ]
+      'typeof WEBGL_RENDERER': JSON.stringify(true),
+    }),
+  ],
 };
