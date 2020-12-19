@@ -2,9 +2,9 @@ const COLOR_PRIMARY = 0x4e342e;
 const COLOR_LIGHT = 0x7b5e57;
 var score;
 
-export default class GameOver extends Phaser.Scene {
+export default class Demo extends Phaser.Scene {
   constructor () {
-      super('GameOver');
+      super('Demo');
   }
 
   preload() {

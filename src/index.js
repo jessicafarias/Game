@@ -18,6 +18,7 @@ import CreditsScene from './scenes/CreditsScene'
 import Score from './scores'
 import GameOver from './scenes/GameOver'
 
+
 class Game extends Phaser.Game {
   constructor () {
     super(config);

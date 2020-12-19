@@ -8,7 +8,7 @@ export default class BattleScene extends Phaser.Scene {
   }
 
   create(){
-    this.cameras.main.setBackgroundColor("rgba(0, 200, 0, 0.5)");
+    //this.cameras.main.setBackgroundColor("rgba(0, 200, 0, 0.5)");
     this.startBattle();
     this.sys.events.on('wake', this.startBattle, this);
               
@@ -88,9 +88,7 @@ export default class BattleScene extends Phaser.Scene {
           gameOver = false;
         }
     }
-    if(victory){
-      this.sys.game.globals.score.plus();
-    } 
+    
     return victory || gameOver;
   }
   receivePlayerSelection(action, target) {
@@ -101,12 +99,11 @@ export default class BattleScene extends Phaser.Scene {
   }  
   endBattle() {       
     if(a.visible&&b.visible){
-      console.log("win?");
+        this.sys.game.globals.score.plus();
     }
 
     if(c.visible&&d.visible){
       this.sys.game.globals.score.gameover();
-      console.log("lose?");
     }
 
     a.destroy();
