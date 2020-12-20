@@ -48,7 +48,7 @@ const CreateLoginDialog = function (scene, config) {
   }).setInteractive()
     .on('pointerdown', () => {
       loginDialog.emit('login', username);
-      //submit(username, score);
+      submit(username, score);
       done = true;
     });
 
@@ -98,10 +98,10 @@ export default class GameOver extends Phaser.Scene {
     if ((score === 0)) {
       this.sys.game.globals.score.restart();
       this.startScoreScene();
-      this.scene.start('ScoreScene',{name:"player", win: "win"});
+      this.scene.start('ScoreScene', { name: 'player', win: 'win' });
     }
-    if(done){
-      this.scene.start('ScoreScene',{name:username, win: score});
+    if (done) {
+      this.scene.start('ScoreScene', { name: username, win: score });
     }
   }
 

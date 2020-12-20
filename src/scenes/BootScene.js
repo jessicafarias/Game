@@ -26,6 +26,6 @@ export default class BootScene extends Phaser.Scene {
   }
 
   getConfirmation() {
-    return "Start WorldScene";
+    return 'Start WorldScene';
   }
 }
