@@ -1,4 +1,4 @@
-import Menu from '../Leaderboard/results';
+import Menu from './menu';
 
 export default class ActionsMenu extends Menu {
   constructor(x, y, scene) {

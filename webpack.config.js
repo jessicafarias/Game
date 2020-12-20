@@ -8,12 +8,6 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     filename: 'app.bundle.js',
   },
-  presets: [['@babel/preset-env', {targets: {node: 'current'}}]],
-  /*
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
-  }, */
   module: {
     rules: [
       {
