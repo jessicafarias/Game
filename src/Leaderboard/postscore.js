@@ -22,9 +22,9 @@ export default function submit(username, score) {
   try {
     postData(url, data)
       .then(data => {
-        console.log(data);
+        return true;
       });
   } catch (error) {
-    console.log(error);
+    return false;
   }
 }
