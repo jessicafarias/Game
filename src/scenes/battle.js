@@ -20,13 +20,13 @@ export default class BattleScene extends Phaser.Scene {
     const dam3 = Math.floor(Math.random() * 16) + 10;
     const dam4 = Math.floor(Math.random() * 16) + 10;
 
-    dragonblue = new Enemy(this, 50, 50, 'dragonblue', null, 'Dragon', 10, dam3);
+    dragonblue = new Enemy(this, 50, 50, 'dragonblue', null, 'Dragon', 40, dam3);
     this.add.existing(dragonblue);
     dragonOrange = new Enemy(this, 50, 100, 'dragonorrange', null, 'Dragon2', 50, dam4);
     this.add.existing(dragonOrange);
-    mage = new PlayerCharacter(this, 250, 100, 'player', 4, 'friend', 10, dam2);
+    mage = new PlayerCharacter(this, 250, 100, 'player', 4, 'friend', 30, dam2);
     this.add.existing(mage);
-    warrior = new PlayerCharacter(this, 250, 50, 'player', 1, 'You', 50, dam);
+    warrior = new PlayerCharacter(this, 250, 50, 'player', 1, 'You', 40, dam);
     this.add.existing(warrior);
 
     const config2 = {
