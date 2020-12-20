@@ -6,7 +6,7 @@ const COLOR_LIGHT = 0x7b5e57;
 let score;
 let done = false;
 
-var CreateLoginDialog = function (scene, config, onSubmit) {
+let CreateLoginDialog = function (scene, config) {
   let username = GetValue(config, 'username', '');
   const title = GetValue(config, 'title', 'Welcome');
   const x = GetValue(config, 'x', 0);
@@ -16,7 +16,7 @@ var CreateLoginDialog = function (scene, config, onSubmit) {
 
   const background = scene.rexUI.add.roundRectangle(0, 0, 10, 10, 10, COLOR_PRIMARY);
   const titleField = scene.add.text(0, 0, title);
-  var userNameField = scene.rexUI.add.label({
+  let userNameField = scene.rexUI.add.label({
     orientation: 'x',
     background: scene.rexUI.add.roundRectangle(0, 0, 10, 10, 10).setStrokeStyle(2, COLOR_LIGHT),
     icon: scene.add.image(0, 0, 'user'),
@@ -51,17 +51,10 @@ var CreateLoginDialog = function (scene, config, onSubmit) {
       done = true;
     });
 
-  var loginDialog = scene.rexUI.add.sizer({
-    orientation: 'y',
-    x,
-    y,
-    width,
-    height,
-  })
+  let loginDialog = scene.rexUI.add.sizer({
+    orientation: 'y', x, y, width, height,})
     .addBackground(background)
-    .add(titleField, 0, 'center', {
-      top: 10, bottom: 10, left: 10, right: 10,
-    }, false)
+    .add(titleField, 0, 'center', {top: 10, bottom: 10, left: 10, right: 10,}, false)
     .add(userNameField, 0, 'left', { bottom: 10, left: 10, right: 10 }, true)
     .add(loginButton, 0, 'center', { bottom: 10, left: 10, right: 10 }, false)
     .layout();

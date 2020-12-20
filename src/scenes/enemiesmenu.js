@@ -1,4 +1,3 @@
-import Phaser from 'phaser';
 import Menu from './menu';
 
 export default class EnemiesMenu extends Menu {
