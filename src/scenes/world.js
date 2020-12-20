@@ -67,8 +67,8 @@ export default class WorldScene extends Phaser.Scene {
     }
   }
 
-  gameover(){
-    return "change to GameOver scene"
+  gameover() {
+    return 'change to GameOver scene';
   }
 
   wake() {

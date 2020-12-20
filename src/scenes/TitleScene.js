@@ -20,7 +20,7 @@ export default class TitleScene extends Phaser.Scene {
       this.model.bgMusicPlaying = true;
       this.sys.game.globals.bgMusic = this.bgMusic;
     }
-    createButtons();
+    this.createButtons();
   }
 
   centerButton(gameObject, offset = 0) {
@@ -37,7 +37,8 @@ export default class TitleScene extends Phaser.Scene {
       gameButton,
     );
   }
-  createButtons(){
+
+  createButtons() {
     return true;
   }
 }

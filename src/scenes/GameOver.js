@@ -6,9 +6,10 @@ const COLOR_PRIMARY = 0x4e342e;
 const COLOR_LIGHT = 0x7b5e57;
 let score;
 let done = false;
+let username;
 
 const CreateLoginDialog = function (scene, config) {
-  let username = GetValue(config, 'username', '');
+  username = GetValue(config, 'username', '');
   const title = GetValue(config, 'title', 'Welcome');
   const x = GetValue(config, 'x', 0);
   const y = GetValue(config, 'y', 0);
@@ -47,7 +48,7 @@ const CreateLoginDialog = function (scene, config) {
   }).setInteractive()
     .on('pointerdown', () => {
       loginDialog.emit('login', username);
-      submit(username, score);
+      //submit(username, score);
       done = true;
     });
 
@@ -94,13 +95,17 @@ export default class GameOver extends Phaser.Scene {
   }
 
   update() {
-    if ((score === 0) || done) {
+    if ((score === 0)) {
       this.sys.game.globals.score.restart();
       this.startScoreScene();
-      this.scene.start('ScoreScene');
+      this.scene.start('ScoreScene',{name:"player", win: "win"});
+    }
+    if(done){
+      this.scene.start('ScoreScene',{name:username, win: score});
     }
   }
-  startScoreScene(){
-    return "Starting ScoreScene"
+
+  startScoreScene() {
+    return 'Starting ScoreScene';
   }
 }

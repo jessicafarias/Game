@@ -21,9 +21,8 @@ export default function submit(username, score) {
   };
   try {
     postData(url, data)
-      .then(data => {
-        return true;
-      });
+      .then(data => data);
+    return true;
   } catch (error) {
     return false;
   }

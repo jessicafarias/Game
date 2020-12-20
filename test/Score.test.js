@@ -2,7 +2,7 @@ import Score from '../src/scores';
 
 describe('Testing Score class', () => {
   describe('testing methods', () => {
-    var score = new Score();
+    const score = new Score();
     it('Create winings variable equal 0', () => {
       expect(score.winings).toBe(0);
     });
@@ -22,15 +22,14 @@ describe('Testing Score class', () => {
     });
 
     it('Testing restart method to restart winings value', () => {
-      score.restart()
+      score.restart();
       expect(score.winings).toBe(0);
     });
 
     it('Testing restart method to restart status value', () => {
       score.plus();
-      score.restart()
+      score.restart();
       expect(score.status).toBeFalsy();
-      
     });
   });
 });
