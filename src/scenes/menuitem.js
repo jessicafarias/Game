@@ -6,12 +6,15 @@ export default class MenuItem extends Phaser.GameObjects.Text {
     super(scene, x, y, text,
       { color: '#ffffff', align: 'left', fontSize: 15 });
   }
+
   select() {
     this.setColor('#f8ff38');
   }
+
   deselect() {
     this.setColor('#ffffff');
   }
+
   unitKilled() {
     this.visible = true;
   }

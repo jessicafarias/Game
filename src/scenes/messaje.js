@@ -17,13 +17,15 @@ export default class Message extends Phaser.GameObjects.Container {
     events.on('Message', this.showMessage, this);
     this.visible = false;
   }
+
   showMessage(text) {
     this.text.setText(text);
     this.visible = true;
     if (this.hideEvent) this.hideEvent.remove(false);
-    const configuration = { delay: 1000, callback: this.hideMessage, callbackScope: this }
+    const configuration = { delay: 1000, callback: this.hideMessage, callbackScope: this };
     this.hideEvent = this.scene.time.addEvent(configuration);
   }
+
   hideMessage() {
     this.visible = false;
   }

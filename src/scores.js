@@ -1,7 +1,7 @@
 import 'phaser';
 
 export default class Score {
-  constructor(wins = 1) {
+  constructor(wins = 0) {
     this.winings = wins;
     this.status = false;
   }

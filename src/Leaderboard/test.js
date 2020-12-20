@@ -1,5 +1,6 @@
 require('regenerator-runtime/runtime');
-const postData = async (url, data) =>{
+
+const postData = async (url, data) => {
   const response = await fetch(url, {
     method: 'POST',
     mode: 'cors',
@@ -10,7 +11,7 @@ const postData = async (url, data) =>{
     body: JSON.stringify(data),
   });
   return response.json();
-}
+};
 
 export default function load2() {
   const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/';
@@ -24,4 +25,3 @@ export default function load2() {
     console.log(error);
   }
 }
-

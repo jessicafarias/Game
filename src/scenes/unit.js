@@ -1,15 +1,19 @@
 import Phaser from 'phaser';
+
 export default class Unit extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, texture, frame, type, hp, damage) {
     super(scene, x, y, texture, frame);
     this.type = type;
-    this.maxHp = this.hp = hp;
+    this.maxHp = hp;
+    this.hp = hp;
     this.damage = damage;
     this.living = true;
   }
+
   setMenuItem(item) {
     this.menuItem = item;
   }
+
   attack(target) {
     if (target.living) {
       target.takeDamage(this.damage);
@@ -17,6 +21,7 @@ export default class Unit extends Phaser.GameObjects.Sprite {
         target.type} for ${this.damage} damage`);
     }
   }
+
   takeDamage(damage) {
     this.hp -= damage;
     if (this.hp <= 0) {

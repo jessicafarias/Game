@@ -1,12 +1,13 @@
 import Phaser from 'phaser';
 import submit from '../Leaderboard/postscore';
-const {GetValue} = Phaser.Utils.Objects;
+
+const { GetValue } = Phaser.Utils.Objects;
 const COLOR_PRIMARY = 0x4e342e;
 const COLOR_LIGHT = 0x7b5e57;
 let score;
 let done = false;
 
-let CreateLoginDialog = function (scene, config) {
+const CreateLoginDialog = function (scene, config) {
   let username = GetValue(config, 'username', '');
   const title = GetValue(config, 'title', 'Welcome');
   const x = GetValue(config, 'x', 0);
@@ -16,7 +17,8 @@ let CreateLoginDialog = function (scene, config) {
 
   const background = scene.rexUI.add.roundRectangle(0, 0, 10, 10, 10, COLOR_PRIMARY);
   const titleField = scene.add.text(0, 0, title);
-  let userNameField = scene.rexUI.add.label({
+
+  const userNameField = scene.rexUI.add.label({
     orientation: 'x',
     background: scene.rexUI.add.roundRectangle(0, 0, 10, 10, 10).setStrokeStyle(2, COLOR_LIGHT),
     icon: scene.add.image(0, 0, 'user'),
@@ -24,8 +26,7 @@ let CreateLoginDialog = function (scene, config) {
     space: {
       top: 5, bottom: 5, left: 5, right: 5, icon: 10,
     },
-  })
-    .setInteractive()
+  }).setInteractive()
     .on('pointerdown', () => {
       const config = {
         onTextChanged(textObject, text) {
@@ -43,23 +44,27 @@ let CreateLoginDialog = function (scene, config) {
     space: {
       top: 8, bottom: 8, left: 8, right: 8,
     },
-  })
-    .setInteractive()
+  }).setInteractive()
     .on('pointerdown', () => {
       loginDialog.emit('login', username);
       submit(username, score);
       done = true;
     });
 
-  let loginDialog = scene.rexUI.add.sizer({
-    orientation: 'y', x, y, width, height,})
-    .addBackground(background)
-    .add(titleField, 0, 'center', {top: 10, bottom: 10, left: 10, right: 10,}, false)
+  const loginDialog = scene.rexUI.add.sizer({
+    orientation: 'y', x, y, width, height,
+  }).addBackground(background)
+    .add(titleField, 0, 'center', {
+      top: 10, bottom: 10, left: 10, right: 10,
+    }, false)
     .add(userNameField, 0, 'left', { bottom: 10, left: 10, right: 10 }, true)
     .add(loginButton, 0, 'center', { bottom: 10, left: 10, right: 10 }, false)
     .layout();
+
   return loginDialog;
 };
+
+
 export default class GameOver extends Phaser.Scene {
   constructor() {
     super('GameOver');
@@ -78,7 +83,7 @@ export default class GameOver extends Phaser.Scene {
   create() {
     score = this.sys.game.globals.score.winings;
     this.add.text(100, 30, 'Game over', { color: 'white', fontSize: '20px ' });
-    const loginDialog = CreateLoginDialog(this, {
+    CreateLoginDialog(this, {
       x: 150,
       y: 120,
       title: `Your score: ${score}`,
@@ -87,6 +92,7 @@ export default class GameOver extends Phaser.Scene {
       print.text += `${username}\n`;
     }).popUp(500);
   }
+
   update() {
     if ((score === 0) || done) {
       this.sys.game.globals.score.restart();
@@ -94,4 +100,3 @@ export default class GameOver extends Phaser.Scene {
     }
   }
 }
-

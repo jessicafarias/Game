@@ -103,10 +103,12 @@ export default class BattleScene extends Phaser.Scene {
 
   endBattle() {
     if (a.visible && b.visible) {
-      this.sys.game.globals.score.plus(); }
+      this.sys.game.globals.score.plus();
+    }
 
     if (c.visible && d.visible) {
-      this.sys.game.globals.score.gameover(); }
+      this.sys.game.globals.score.gameover();
+    }
 
     a.destroy();
     b.destroy();
@@ -115,7 +117,7 @@ export default class BattleScene extends Phaser.Scene {
 
     this.heroes.length = 0;
     this.enemies.length = 0;
-    for (let i = 0; i < this.units.length; i+=1) {
+    for (let i = 0; i < this.units.length; i += 1) {
       this.units[i].destroy();
     }
     this.units.length = 0;

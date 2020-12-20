@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import MenuItem from './menuitem';
+
 export default class Menu extends Phaser.GameObjects.Container {
   constructor(x, y, scene) {
     super(scene, x, y);
@@ -9,12 +10,14 @@ export default class Menu extends Phaser.GameObjects.Container {
     this.y = y;
     this.selected = false;
   }
+
   addMenuItem(unit) {
     const menuItem = new MenuItem(0, this.menuItems.length * 20, unit, this.scene);
     this.menuItems.push(menuItem);
     this.add(menuItem);
     return menuItem;
   }
+
   moveSelectionUp() {
     this.menuItems[this.menuItemIndex].deselect();
     do {
@@ -23,6 +26,7 @@ export default class Menu extends Phaser.GameObjects.Container {
     } while (!this.menuItems[this.menuItemIndex].active);
     this.menuItems[this.menuItemIndex].select();
   }
+
   moveSelectionDown() {
     this.menuItems[this.menuItemIndex].deselect();
     do {
@@ -31,6 +35,7 @@ export default class Menu extends Phaser.GameObjects.Container {
     } while (!this.menuItems[this.menuItemIndex].active);
     this.menuItems[this.menuItemIndex].select();
   }
+
   select(index) {
     if (!index) index = 0;
     this.menuItems[this.menuItemIndex].deselect();
@@ -43,12 +48,13 @@ export default class Menu extends Phaser.GameObjects.Container {
     this.menuItems[this.menuItemIndex].select();
     this.selected = true;
   }
+
   deselect() {
     this.menuItems[this.menuItemIndex].deselect();
     this.menuItemIndex = 0;
     this.selected = false;
   }
-  
+
   clear() {
     for (let i = 0; i < this.menuItems.length; i += 1) {
       this.menuItems[i].destroy();
@@ -56,6 +62,7 @@ export default class Menu extends Phaser.GameObjects.Container {
     this.menuItems.length = 0;
     this.menuItemIndex = 0;
   }
+
   remap(units) {
     this.clear();
     for (let i = 0; i < units.length; i += 1) {
