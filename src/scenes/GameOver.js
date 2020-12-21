@@ -95,9 +95,9 @@ export default class GameOver extends Phaser.Scene {
   }
 
   update() {
+    this.sys.game.globals.score.restart();
+    this.startScoreScene();
     if ((score === 0)) {
-      this.sys.game.globals.score.restart();
-      this.startScoreScene();
       this.scene.start('ScoreScene', { name: 'player', win: 'win' });
     }
     if (done) {
