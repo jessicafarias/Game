@@ -30,8 +30,8 @@
   - Run npm install on your terminal *be sure that you are in the project's directory*:
   `npm install`
   - Finally run a local server using chrome:
-  `yarn run webpack-dev-server`
-  -Go http://localhost:8080/
+  `npm run start` or `yarn run webpack-dev-server`
+  - Go http://localhost:8080/
 
 ## Setup and run the app
 > Follow these steps to set up and run the quickstart:
@@ -40,7 +40,7 @@
 
 ### Live Demo :
 
-[Click here](https://jessicafarias.github.io/Game/)
+[Click here](https://eloquent-volhard-65590d.netlify.app/)
 
 ### Author
 
