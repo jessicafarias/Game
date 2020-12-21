@@ -21,11 +21,6 @@ export default class BootScene extends Phaser.Scene {
   }
 
   goto() {
-    this.getConfirmation();
     this.scene.start('WorldScene');
-  }
-
-  getConfirmation() {
-    return 'Start WorldScene';
   }
 }

@@ -18,6 +18,9 @@ const CreateLoginDialog = function (scene, config) {
 
   const background = scene.rexUI.add.roundRectangle(0, 0, 10, 10, 10, COLOR_PRIMARY);
   const titleField = scene.add.text(0, 0, title);
+  const loginDialog = scene.rexUI.add.sizer({
+    orientation: 'y', x, y, width, height,
+  });
 
   const userNameField = scene.rexUI.add.label({
     orientation: 'x',
@@ -38,6 +41,7 @@ const CreateLoginDialog = function (scene, config) {
       scene.rexUI.edit(userNameField.getElement('text'), config);
     });
 
+
   const loginButton = scene.rexUI.add.label({
     orientation: 'x',
     background: scene.rexUI.add.roundRectangle(0, 0, 10, 10, 10, COLOR_LIGHT),
@@ -52,14 +56,12 @@ const CreateLoginDialog = function (scene, config) {
       done = true;
     });
 
-  const loginDialog = scene.rexUI.add.sizer({
-    orientation: 'y', x, y, width, height,
-  }).addBackground(background)
+  loginDialog.addBackground(background)
     .add(titleField, 0, 'center', {
       top: 10, bottom: 10, left: 10, right: 10,
-    }, false)
-    .add(userNameField, 0, 'left', { bottom: 10, left: 10, right: 10 }, true)
-    .add(loginButton, 0, 'center', { bottom: 10, left: 10, right: 10 }, false)
+    }, false).add(userNameField, 0, 'left', { bottom: 10, left: 10, right: 10 },
+      true).add(loginButton, 0, 'center',
+      { bottom: 10, left: 10, right: 10 }, false)
     .layout();
 
   return loginDialog;
@@ -90,22 +92,17 @@ export default class GameOver extends Phaser.Scene {
       title: `Your score: ${score}`,
       username: 'name',
     }).on('login', (username) => {
-      print.text += `${username}\n`;
+      window.print.text += `${username}\n`;
     }).popUp(500);
   }
 
   update() {
     this.sys.game.globals.score.restart();
-    this.startScoreScene();
     if ((score === 0)) {
       this.scene.start('ScoreScene', { name: 'player', win: 'win' });
     }
     if (done) {
       this.scene.start('ScoreScene', { name: username, win: score });
     }
-  }
-
-  startScoreScene() {
-    return 'Starting ScoreScene';
   }
 }

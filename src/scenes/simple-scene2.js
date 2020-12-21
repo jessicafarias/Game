@@ -15,14 +15,9 @@ export default class SimpleScene2 extends Phaser.Scene {
     this.add.text(120, 180, 'select option');
     this.add.text(135, 195, 'to attack');
     this.time.addEvent({ delay: 4000, callback: this.goto, callbackScope: this });
-    this.DisplayInstructions();
   }
 
   goto() {
     this.scene.start('BootScene');
-  }
-
-  DisplayInstructions() {
-    return 'Displaying instruction for 4 seconds';
   }
 }

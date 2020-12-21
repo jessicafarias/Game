@@ -6,6 +6,7 @@ let a; let b; let c; let d; let dragonblue; let dragonOrange; let warrior; let m
 export default class BattleScene extends Phaser.Scene {
   constructor() {
     super('BattleScene');
+    this.check = false;
   }
 
   create() {
@@ -90,7 +91,7 @@ export default class BattleScene extends Phaser.Scene {
         gameOver = false;
       }
     }
-
+    this.check = true;
     return victory || gameOver;
   }
 
@@ -99,6 +100,7 @@ export default class BattleScene extends Phaser.Scene {
       this.units[this.index].attack(this.enemies[target]);
     }
     this.time.addEvent({ delay: 3000, callback: this.nextTurn, callbackScope: this });
+    this.check = true;
   }
 
   endBattle() {
@@ -126,17 +128,20 @@ export default class BattleScene extends Phaser.Scene {
   }
 
   update() {
-    if (dragonblue.hp <= 0) {
-      a.visible = true;
-    }
-    if (dragonOrange.hp <= 0) {
-      b.visible = true;
-    }
-    if (mage.hp <= 0) {
-      c.visible = true;
-    }
-    if (warrior.hp <= 0) {
-      d.visible = true;
+    if (this.check) {
+      if (dragonblue.hp <= 0) {
+        a.visible = true;
+      }
+      if (dragonOrange.hp <= 0) {
+        b.visible = true;
+      }
+      if (mage.hp <= 0) {
+        c.visible = true;
+      }
+      if (warrior.hp <= 0) {
+        d.visible = true;
+      }
+      this.check = false;
     }
   }
 }

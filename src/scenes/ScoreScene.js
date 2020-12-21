@@ -1,24 +1,23 @@
 import Phaser from 'phaser';
 import getBest from '../Leaderboard/results';
 
-let name;
-let win;
-
 export default class ScoreScene extends Phaser.Scene {
   constructor() {
     super('ScoreScene');
+    this.name = '';
+    this.win = '';
   }
 
   init(data) {
-    name = data.name;
-    win = data.win;
+    this.name = data.name;
+    this.win = data.win;
   }
 
   create() {
     this.add.text(75, 20, 'Best Players', { fontSize: '20px', fill: '#db2e00' });
 
-    this.add.text(50, 50, `*${name}*`, { fill: '#FF5733' });
-    this.add.text(250, 50, win, { fill: '#FF5733' });
+    this.add.text(50, 50, `*${this.name}*`, { fill: '#FF5733' });
+    this.add.text(250, 50, this.win, { fill: '#FF5733' });
 
     getBest().then(data => {
       const top = data.result.sort((a, b) => b.score - a.score);
