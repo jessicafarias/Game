@@ -3,11 +3,12 @@
   <h1 align="center">Role Playing Gamming (RPG Game)</h1>
 
   <p align="center">
-    Based on javascript this is a role playing gamming, you need to fight with dragons, use space to start attack, then select wich draggon you or your friend want to attack, each player has a random damage
+    Based on javascript this is role-playing gaming, you need to fight with dragons.
+    To control the game use space and arrows of the keyboard to move in the menu, select attack with space then select which dragon you want to attack with a move up and down with arrows of the keyboard, each player has a random damage attack.
   </p>
 
 ## Preview:
-![screenshot](./src/57297.jpg)
+![screenshot](./build/assets/computer.png)
 
 ### Built with
 
@@ -34,8 +35,8 @@
 
 ## Setup and run the app
 > Follow these steps to set up and run the quickstart:
-  `yarn run test`
-  -Go the terminal to see all pass tests
+  - `yarn run test`
+  - Go the terminal to see all pass tests
 
 ### Live Demo :
 
