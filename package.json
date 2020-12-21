@@ -31,7 +31,10 @@
     "webpack-dev-server": "^2.11.5"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "dev": "webpack --mode development",
+    "build": "webpack",
+    "start": "webpack-dev-server"
   },
   "jest": {
     "setupFiles": ["jest-canvas-mock"]
