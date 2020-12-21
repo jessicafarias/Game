@@ -7,10 +7,29 @@
     To control the game use space and arrows of the keyboard to move in the menu, select attack with space then select which dragon you want to attack with a move up and down with arrows of the keyboard, each player has a random damage attack.
   </p>
 
-## Preview:
+## Screenshots:
 ![screenshot](./build/assets/computer.png)
 
-### Built with
+
+# Game instructions:
+> Click on "play" to start the game
+
+### World scene
+  - Use the keyboard arrows to move right left up and down
+
+### Battle scene
+  - Use space when you are ready to attack (choose attack)
+  - Now you should be in the left menu, Up and Down to point the dragon (choose dragon)
+  - Use space again to attack the dragon that you are pointing (attack dragon)
+
+### GameOver
+  - After you losse the battle, you should write your name (you need at least 1 win to include your name in the score table)
+
+## Live Demo : 
+[Click here](https://eloquent-volhard-65590d.netlify.app/)
+
+
+## Built with
 
 - HTML
 - JavaScript
@@ -35,14 +54,10 @@
 
 ## Setup and run the app
 > Follow these steps to set up and run the quickstart:
-  - `yarn run test`
+  - `npm run test`
   - Go the terminal to see all pass tests
 
-### Live Demo :
-
-[Click here](https://eloquent-volhard-65590d.netlify.app/)
-
-### Author
+## Author
 
 👤 **Jessica Michelle Farías Rosado**
 
