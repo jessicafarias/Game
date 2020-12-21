@@ -10,9 +10,12 @@
 ## Screenshots:
 ![screenshot](./build/assets/computer.png)
 
+### Youtube video : 
+ - [Click here](https://youtu.be/K2DuumEOU94)
+
 
 # Game instructions:
-> Click on "play" to start the game
+ > Click on "play" to start the game
 
 ### World scene
   - Use the keyboard arrows to move right left up and down
