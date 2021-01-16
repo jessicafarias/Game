@@ -64,9 +64,11 @@
 
 👤 **Jessica Michelle Farías Rosado**
 
-- Website [jessicafarias.me](http://jessicafarias.me/)
-- Twitter: [@FariasRosado](https://twitter.com/FariasRosado)
-- Linkedin: [linkedin](https://www.linkedin.com/in/jessica-michelle-farias-rosado/)
+[![Website](https://img.shields.io/badge/-Website-7C26FF?style=for-the-badge&logo=Julia&logoColor=white)](https://jessicafarias.github.io/) <br>
+[![GitHub](https://img.shields.io/badge/-GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/jessicafarias) <br>
+[![LINKEDIN](https://img.shields.io/badge/-LINKEDIN-0077B5?style=for-the-badge&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/jessica-michelle-farias-rosado/) <br>
+[![EMAIL](https://img.shields.io/badge/-EMAIL-D14836?style=for-the-badge&logo=Mail.Ru&logoColor=white)](mailto:jessica.farias.rosado@gmail.com) <br>
+[![TWITTER](https://img.shields.io/badge/-TWITTER-1DA1F2?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/FariasRosado)
 
 ## 🤝 Contributing
 
